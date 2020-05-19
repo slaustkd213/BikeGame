@@ -7,6 +7,10 @@ TagManager:
   - Bound
   - Obstacle
   - Floor
+  - PlayerBody
+  - PlayerHead
+  - Accel
+  - Ice
   - Mud
   layers:
   - Default

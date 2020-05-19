@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -71,28 +71,24 @@ public class PlayerController : MonoBehaviour
             int key = 0;
 
             // 키보드 조작
-            //if (Input.GetKey(KeyCode.A) && mRigidbody.velocity.x > mSideMaxSpeed * -1)
-            //{
-            //    key = -1;
-            //}
-
-            //if (Input.GetKey(KeyCode.D) && mRigidbody.velocity.x < mSideMaxSpeed)
-            //{
-            //    key = 1;
-            //}
-            // 카메라 조작
-            if ((Input.GetKey(KeyCode.A) && mRigidbody.velocity.x > mSideMaxSpeed * -1) ||
-                (mCamera.transform.eulerAngles.z > 10 && mCamera.transform.eulerAngles.z <= 180
-                && mRigidbody.velocity.x > mSideMaxSpeed * -1))
+            if (Input.GetKey(KeyCode.A) && mRigidbody.velocity.x > mSideMaxSpeed * -1)
             {
                 key = -1;
             }
-            if ((Input.GetKey(KeyCode.D) && mRigidbody.velocity.x < mSideMaxSpeed) ||
-                (mCamera.transform.eulerAngles.z >= 270 && mCamera.transform.eulerAngles.z < 350
-                && mRigidbody.velocity.x < mSideMaxSpeed))
+
+            if (Input.GetKey(KeyCode.D) && mRigidbody.velocity.x < mSideMaxSpeed)
             {
                 key = 1;
             }
+            // 카메라 조작
+            //if (mCamera.transform.eulerAngles.z > 10 && mCamera.transform.eulerAngles.z <= 180)
+            //{
+            //    key = -1;
+            //}
+            //if (mCamera.transform.eulerAngles.z >= 270 && mCamera.transform.eulerAngles.z < 350)
+            //{
+            //    key = 1;
+            //}
 
             if (mIsOnIce == true)
             {
@@ -104,19 +100,13 @@ public class PlayerController : MonoBehaviour
             }
 
             // 점프
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (mIsOnGround == true && mIsOnMud != true)
                 {
                     Jump();
                 }
             }
-        }
-
-        // 리셋
-        if (Input.GetKeyDown(KeyCode.Joystick1Button1))
-        {
-            Reset();
         }
     }
 
@@ -212,19 +202,5 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         mRigidbody.AddForce(transform.up * mJumpForce);
-    }
-
-    public void Reset()
-    {
-        transform.position = new Vector3(-13.5f, 1.5f, 15f);
-        mIsAlive = true;
-        mForwardMoveForce = 5000f;
-        mForwardMaxSpeed = 15f;
-        mSideMoveForce = 6000f;
-        mSideMaxSpeed = 6f;
-        mJumpForce = 1100f;
-        mIsAccelerated = false;
-        mAccelspan = 2f;
-        mIsOnMud = false;
     }
 }

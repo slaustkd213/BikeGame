@@ -959,8 +959,13 @@ MonoBehaviour:
   mForwardMaxSpeed: 0
   mSideMoveForce: 0
   mSideMaxSpeed: 0
-  isOnGround: 0
+  mIsOnGround: 0
   mJumpForce: 0
+  mIsAccelerated: 0
+  mAccelspan: 0
+  mIsOnIce: 0
+  mMoveOnIce: {x: 0, y: 0, z: 0}
+  mIsOnMud: 0
   mArrayMaterial: []
 --- !u!1 &181380267432736819
 GameObject:
